@@ -84,17 +84,27 @@
 
 				$sql = "INSERT INTO preguntas(email, enunciado, rCorrecta, rIncorrecta1, rIncorrecta2, rIncorrecta3, complejidad, tema, imagen) VALUES ('$_POST[email]', '$_POST[enunciado]', '$_POST[rCorrecta]', '$_POST[rIncorrecta1]', '$_POST[rIncorrecta2]', '$_POST[rIncorrecta3]', '$_POST[complejidad]', '$_POST[tema]', '$imagen')";
 
-				$xml = simplexml_load_file('preguntas.xml')
+				$xml = simplexml_load_file('preguntas.xml');
 
 				$registro = $xml->addChild('assessmentItem');
+
 				$registro->addAttribute('complexity', $_POST['complejidad']);
 				$registro->addAttribute('subject', $_POST['tema']);
 				$registro->addAttribute('author', $_POST['email']);
-				$registro->addChild('itemBody', $_POST['enunciado'].'\n');
-				$registro->addChild('correctResponse', $_POST['rCorrecta'].'\n');
-				$incorrecta1-> $registro->addChild('value', $_POST['rIncorrecta1'].'\n' );
-				$incorrecta2-> $registro->addChild('value', $_POST['rIncorrecta2'].'\n' );
-				$incorrecta3-> $registro->addChild('value', $_POST['rIncorrecta3'].'\n' );
+
+				$registro->addChild('itemBody', $_POST['enunciado']);
+
+				$correcta = $registro->addChild('correctResponse');
+				$correcta->addChild('value', $_POST['rCorrecta']);
+
+				$incorrecta = $registro->addChild('incorrectResponses');
+
+				$incorrecta->addChild('value', $_POST['rIncorrecta1']);
+				$incorrecta->addChild('value', $_POST['rIncorrecta2']);
+				$incorrecta->addChild('value', $_POST['rIncorrecta3']);
+
+				$dom = dom_import_simplexml($xml)->ownerDocument;
+				$dom->formatOutput = TRUE;
 
 				echo $xml->asXML();
 				$xml->asXML('preguntas.xml');
