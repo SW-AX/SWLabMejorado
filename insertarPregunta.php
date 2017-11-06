@@ -91,8 +91,10 @@
 				$registro->addAttribute('complexity', $_POST['complejidad']);
 				$registro->addAttribute('subject', $_POST['tema']);
 				$registro->addAttribute('author', $_POST['email']);
+				
+				$itembody = $registro->addChild('itemBody');
 
-				$registro->addChild('itemBody', $_POST['enunciado']);
+				$itembody->addChild('p', $_POST['enunciado']);
 
 				$correcta = $registro->addChild('correctResponse');
 				$correcta->addChild('value', $_POST['rCorrecta']);
