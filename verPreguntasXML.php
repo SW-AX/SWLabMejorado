@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 
 $link = mysql_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
