@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-$link = mysql_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
-
-    or die('No se pudo conectar: ' . mysql_error());
-
-
-$preguntas = mysql_query($link, 'SELECT * FROM preguntas') or die('Consulta fallida: ' . mysql_error());
+$preguntas = simplexml_load_file('preguntas.xml');
 
 
 
@@ -17,14 +12,12 @@ echo '<table border=1>
 			<th>TEMA</th>
 		</tr>';
 		
- while ($row = mysql_fetch_array($preguntas)){
-	echo'<tr>
-    <td>' .$row['enunciado']. '</td>
-    <td>' .$row['complejidad'].'</td>
-    <td>' .$row['tema']. '</td></tr>'
- }
- echo '</table>';
-$usuarios->close();
-mysqli_close($link);
-	
+	foreach($preguntas->children() as $pregunta){
+		echo'<tr>';
+		echo '<td>'.$pregunta->itemBody->p.'</td>';
+        echo '<td>'.$pregunta->attributes()->complexity.'</td>';
+        echo '<td>'.$pregunta->attributes()->subject.'</td>';
+        echo '</tr>';
+	}
+echo '</table>';	
 ?>
