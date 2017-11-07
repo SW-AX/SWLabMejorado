@@ -1,6 +1,6 @@
 <?php
 	$xslDoc = new DOMDocument();
-    $xslDoc->load("VerPreguntas.xsl");
+    $xslDoc->load("verPreguntas.xsl");
     $xmlDoc = new DOMDocument();
     $xmlDoc->load("preguntas.xml");
     $proc = new XSLTProcessor();
