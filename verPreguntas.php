@@ -53,6 +53,8 @@
 			<footer class='main' id='f1'>
 				<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
 				<a href='https://github.com'>Link GITHUB</a>
+				<a href="verPreguntasXML.php">verPreguntasXML</a>
+				<a href="verPreguntasXSL.php">verPreguntasXSL</a>
 			</footer>
 		</div>
 		<script type='text/javascript'>
