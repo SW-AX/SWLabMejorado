@@ -52,9 +52,12 @@
 				<script type='text/javascript'>
 					$('#re').attr('href', 'register.php?op=logged&e=" .$_GET['e']. "')
 					$('#cr').attr('href', 'creditos.php?op=logged&e=" .$_GET['e']. "')
-					$('#lg').html('Logout')
-					$('#lg').attr('href', 'inicio.php')
-					$('#main').html('Bienvenido!')
+					$('#lg').html('Logout');
+					$('#lg').attr('href', 'inicio.php');
+					$('#main').html('Bienvenido!');
+					$('#main').append('<br><a>Gestionar Preguntas</a>');
+					$('#main a').attr('href', 'GestionarPreguntas.php');
+
 					$('#lg').click( function (){
 						alert('Adios! Vuelve pronto');		
 					});
