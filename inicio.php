@@ -56,7 +56,7 @@
 					$('#lg').attr('href', 'inicio.php');
 					$('#main').html('Bienvenido!');
 					$('#main').append('<br><a>Gestionar Preguntas</a>');
-					$('#main a').attr('href', 'GestionarPreguntas.php');
+					$('#main a').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');
 
 					$('#lg').click( function (){
 						alert('Adios! Vuelve pronto');		
