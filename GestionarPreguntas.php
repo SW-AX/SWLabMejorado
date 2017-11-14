@@ -79,7 +79,7 @@
 				if (XMLHttpRequestObject.readyState == 4) {
 					var obj = document.getElementById('resultado');
 
-					var respuesta = XMLHttpRequestObject.responseText;
+					var respuesta = XMLHttpRequestObject.responseXML;
 
 					var numeroPreguntas = respuesta.getElementsByTagName('assessmentItem').length();
 
