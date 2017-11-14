@@ -35,7 +35,7 @@
 						Complejidad (1..5)* <input type="text" id="var7" name="complejidad" style="width:225px"> <br>
 						Tema:*<input type="text" id="var8" name="tema" style="width:225px"> <br>
 						Imagen: <input type="file" id="var9" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
-						<input type="button" name="submit" value="Enviar" id="send">
+						<input type="button" name="send" value="Ver Preguntas" id="send" onclick ="pedirDatos()">
 						<input type="reset" id="del">
 					</form>
 				</div>
