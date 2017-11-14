@@ -21,7 +21,19 @@
 	    <section class="main" id="s1">
 	    
 		<div>
-			COSAS
+			<form id="fpreguntas" name="fpreguntas" method="post" action="" style="float:left" enctype="multipart/form-data">
+				Email:*<input type="text" id="var1" name="email" style="width:225px" autocomplete="true"> <br>
+				Enunciado de la pregunta:*<input type="text" name="enunciado" id="var2" style="width:225px"> <br>
+				Respuesta Correcta:*<input type="text" id="var3" name="rCorrecta" style="width:225px"> <br>
+				Respuesta Incorrecta:*<input type="text" id="var4" name="rIncorrecta1" style="width:225px"> <br>
+				Respuesta Incorrecta:*<input type="text" id="var5" name="rIncorrecta2" style="width:225px"> <br>
+				Respuesta Incorrecta:*<input type="text" id="var6" name="rIncorrecta3" style="width:225px"> <br>
+				Complejidad (1..5)* <input type="text" id="var7" name="complejidad" style="width:225px"> <br>
+				Tema:*<input type="text" id="var8" name="tema" style="width:225px"> <br>
+				Imagen: <input type="file" id="var9" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
+				<input type="submit" name="submit" value="Enviar" id="send">
+				<input type="reset" id="del">
+			</form>
 		</div>
 	    </section>
 		<footer class='main' id='f1'>
