@@ -134,7 +134,7 @@
 
 			function changeImg(input){
 				if (!$('#newImg').length) {
-				$("#sp1").append('<img id="newImg" src="" style="float:right;width:180px;height:180px">');
+				$("#s1").append('<img id="newImg" src="" style="float:right;width:180px;height:180px">');
 				}
 				var reader= new FileReader();
 				reader.onload= function(e){
