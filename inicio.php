@@ -59,7 +59,15 @@
 					$('#main a').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');
 
 					$('#lg').click( function (){
-						alert('Adios! Vuelve pronto');		
+						alert('Adios! Vuelve pronto');
+						$xml = simplexml_load_file('logged.xml');
+						var x = xmlDoc.getElementsByTagName('cantidad')[0];
+						x=x-1;
+						$xml->[0] = x;
+						$dom = dom_import_simplexml($xml)->ownerDocument;
+						$dom->formatOutput = TRUE;
+						echo $xml->asXML();
+						$xml->asXML('logged.xml');						
 					});
 				</script>
 				");
