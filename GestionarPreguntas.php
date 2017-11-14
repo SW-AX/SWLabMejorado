@@ -35,7 +35,7 @@
 						Complejidad (1..5)* <input type="text" id="var7" name="complejidad" style="width:225px"> <br>
 						Tema:*<input type="text" id="var8" name="tema" style="width:225px"> <br>
 						Imagen: <input type="file" id="var9" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
-						<input type="button" name="send" value="Ver Preguntas" id="send" onclick ="pedirDatos()">
+						<input type="button" name="send" value="Insertar" id="send" onclick ="enviarDatos()">
 						<input type="reset" id="del">
 					</form>
 				</div>
@@ -49,76 +49,7 @@
 				<a href='https://github.com'>Link GITHUB</a>
 			</footer>
 		</div>
-				<?php
 			
-
-
-			echo ("
-				<script type='text/javascript'>
-					$('#var1').val('" . $_GET['e'] . "');
-					$('#var1').attr('readonly', true);
-				</script>
-			");
-
-			if(isset($_POST['send'])) {
-
-				$link = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
-				$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-
-				if ($_POST['email'] == "" || $_POST['enunciado'] == "" || $_POST['rCorrecta'] == "" || $_POST['rIncorrecta1'] == "" || $_POST['rIncorrecta2'] == "" || $_POST['rIncorrecta3'] == "" || $_POST['complejidad'] == "" || $_POST['tema'] == "")
-					die("Error campos vacios");
-				if (!preg_match("/^([1-5])$/","$_POST[complejidad]"))
-					die("Error complejidad");
-				if (!preg_match("/^([a-zA-Z])+([0-9]{3})+(@ikasle.ehu.)+(es|eus)$/","$_POST[email]"))
-					die("Error email");
-				if (strlen($_POST['enunciado']) < 10)
-					die("Error enunciado");
-				
-
-				$sql = "INSERT INTO preguntas(email, enunciado, rCorrecta, rIncorrecta1, rIncorrecta2, rIncorrecta3, complejidad, tema, imagen) VALUES ('$_POST[email]', '$_POST[enunciado]', '$_POST[rCorrecta]', '$_POST[rIncorrecta1]', '$_POST[rIncorrecta2]', '$_POST[rIncorrecta3]', '$_POST[complejidad]', '$_POST[tema]', '$imagen')";
-
-				$xml = simplexml_load_file('preguntas.xml');
-
-				$registro = $xml->addChild('assessmentItem');
-
-				$registro->addAttribute('complexity', $_POST['complejidad']);
-				$registro->addAttribute('subject', $_POST['tema']);
-				$registro->addAttribute('author', $_POST['email']);
-				
-				$itembody = $registro->addChild('itemBody');
-
-				$itembody->addChild('p', $_POST['enunciado']);
-
-				$correcta = $registro->addChild('correctResponse');
-				$correcta->addChild('value', $_POST['rCorrecta']);
-
-				$incorrecta = $registro->addChild('incorrectResponses');
-
-				$incorrecta->addChild('value', $_POST['rIncorrecta1']);
-				$incorrecta->addChild('value', $_POST['rIncorrecta2']);
-				$incorrecta->addChild('value', $_POST['rIncorrecta3']);
-
-				$dom = dom_import_simplexml($xml)->ownerDocument;
-				$dom->formatOutput = TRUE;
-
-				echo $xml->asXML();
-				$xml->asXML('preguntas.xml');
-
-
-
-				if(!mysqli_query($link, $sql)) {
-					die("Error: " . mysqli_error($link));
-				}
-				echo ("
-					<script type='text/javascript'>
-						var obj = document.getElementById('resultado');
-						obj.innerHTML = "Pregunta insertada correctamente"						
-					</script>
-				");
-
-				mysqli_close($link);
-			}		
-		?>
 		<script>
 			function changeImg(input){
 				if (!$('#newImg').length) {
@@ -142,30 +73,24 @@
 				$('#newImg').remove();
 			});
 
-			XMLHttpRequestObject = new XMLHttpRequest();
-
-			XMLHttpRequestObject.onreadystatechange = function() {
-				alert (XMLHttpRequestObject.responseText);
-				if (XMLHttpRequestObject.readyState == 4) {
-					var obj = document.getElementById('resultado');
-
-					var respuesta = XMLHttpRequestObject.responseXML;
-
-					var numeroPreguntas = respuesta.getElementsByTagName('assessmentItem').length();
-
-					alert("numero preguntas es" + numeroPreguntas);
-
-					for (var i = 0; i < numeroPreguntas; i++) {
-
-						obj.innerHTML =  respuesta.getElementByTagName('assessmentItem')[i].getAttribute('complexity');
-						alert("contador" + i);
-					}
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					document.getElementById("resultado").innerHTML = xmlhttp.responseText;
 				}
 			}
 
 			function pedirDatos() {
-				XMLHttpRequestObject.open("GET",'preguntas.xml');
- 				XMLHttpRequestObject.send(null);
+				alert("Llama a pedir");
+				xmlhttp.open("GET",'verPreguntasParaAJAX.php');
+ 				xmlhttp.send(null);
+			}
+
+			function enviarDatos() {
+				alert("Llama a enviar");
+				xmlhttp.open("POST",'insertarPreguntasParaAJAX.php');
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 				xmlhttp.send($("#fpreguntas").serialize());
 			}
 		</script>
 	</body>
