@@ -60,7 +60,7 @@
 				</script>
 			");
 
-			if(isset($_POST['submit'])) {
+			if(isset($_POST['send'])) {
 
 				$link = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
 				$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
