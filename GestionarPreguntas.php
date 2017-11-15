@@ -15,8 +15,8 @@
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
-				<span>Inicio</spam>
-				<span><a href=<?php echo("'inicio.php?op=logged&e=" .$_GET['e']. "'"); ?>>Volver al inicio</a></spam>
+				<span>Inicio</span>
+				<span><a href=<?php echo("'inicio.php?op=logged&e=" .$_GET['e']. "'"); ?>>Volver al inicio</a></span>
 			</nav>
 			<section class="main" id="s1">
 
