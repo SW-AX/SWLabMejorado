@@ -40,7 +40,8 @@
 		<?php
 			if(isset($_POST['submit'])) {
 
-				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz") or die(mysqli_error());
+				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
+				or die(mysqli_error());
 
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
