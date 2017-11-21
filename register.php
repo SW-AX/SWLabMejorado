@@ -52,8 +52,8 @@
 						}
 					?>
 					 style="float:left" enctype="multipart/form-data">
-						Email:*<input type="text" id="var1" name="email" style="width:225px" autocomplete="true"> <br>
-						Nombre y Apellidos:*<input type="text" id="var2" name="identificador"  style="width:225px" autocomplete="true"> <br>
+						Email:*<input type="text" id="var1" name="email" style="width:225px" autocomplete="true"><span id="esVip"></span><br>
+						Nombre y Apellidos:*<input type="text" id="var2" name="identificador"  style="width:225px" autocomplete="true"><br>
 						Nick:*<input type="text" id="var3" name="nick" style="width:225px"> <br>
 						Password:*<input type="password" id="var4" name="password1" style="width:225px"> <br>
 						Repetir Password:*<input type="password" id="var5" name="password2" style="width:225px"> <br>
@@ -125,8 +125,36 @@
 		}
 			
 		?>
+
 		<script type='text/javascript'>
+			var emailCorrecto = false;
+
 			$('#re').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+
+			$('#var1').change(function() {
+				alert("se llama a la funcion");
+				alert($('#var1').val());
+				$.ajax({
+		            data:  {email : $('#var1').val()},
+		            url:   'ComprobarVIP.php',
+		            type:  'post',
+		            beforeSend: function () {
+		                $("#esVip").html("Comprobando...");
+		                emailCorrecto = false;
+		            },
+		            success:  function (response) {
+		     			alert(response);
+		            	if (response == "SI") {
+		                	$("#esVip").html("Valido");
+		                	emailCorrecto = true;
+		                }
+		                else {
+		                	$("#esVip").html("No valido");
+		                	emailCorrecto = false;
+		                }
+		            }
+		        });
+		    });	
 		</script>	
 	</body>
 </html>

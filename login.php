@@ -40,7 +40,8 @@
 		<?php
 			if(isset($_POST['submit'])) {
 
-				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz") or die(mysqli_error());
+				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
+				or die(mysqli_error());
 
 				$email = $_POST['email'];
 				$pass = $_POST['pass'];
@@ -56,14 +57,6 @@
 						<script type='text/javascript'>
 						alert('login correcto!');
 						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
-						$xml = simplexml_load_file('logged.xml');
-						var x = xmlDoc.getElementsByTagName('cantidad')[0];
-						x=x+1;
-						$xml->[0] = x;
-						$dom = dom_import_simplexml($xml)->ownerDocument;
-						$dom->formatOutput = TRUE;
-						echo $xml->asXML();
-						$xml->asXML('logged.xml');
 						</script>
 					");
 				}
