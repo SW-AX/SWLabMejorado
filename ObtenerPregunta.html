@@ -17,6 +17,8 @@
 					<th> Respuesta Correcta </th>
 					<th> Complejidad </th>
 				</tr>
+				<tr id="fila">
+				</tr>
 		</table>
 		
 		<script type='text/javascript'>
@@ -29,7 +31,7 @@
                 type: 'POST',
             
                 success: function (response) {
-                  $("#tabla").html(response);
+                  $("#fila").html(response);
                 }
             });  
 
