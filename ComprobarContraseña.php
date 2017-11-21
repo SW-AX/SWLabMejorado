@@ -7,7 +7,7 @@ require_once("nusoap-0.9.5/src/nusoap.php");
 //creamos el objeto de tipo soap_server
 $ns="http://localhost/nusoap-0.9.5/samples";
 $server = new soap_server;
-$server->configureWSDL('sumar',$ns);
+$server->configureWSDL('comprobar',$ns);
 $server->wsdl->schemaTargetNamespace=$ns;
 //registramos la función que vamos a implementar
 $server->register('comprobar',
