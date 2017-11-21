@@ -129,15 +129,20 @@
 		?>
 
 		<script type='text/javascript'>
-			var emailCorrecto = false;
-			var contraseñaCorrecta = false;
+			var emailCorrecto;
+			var contraseñaCorrecta;
 
-			if(!emailCorrecto || !contraseñaCorrecta) {
-				 $(':input[type="submit"]').prop('disabled', true);
-			}
-			if(emailCorrecto && contraseñaCorrecta) {
-				$(':input[type="submit"]').prop('disabled', false);
-			}
+			$(document).ready(function() {
+				emailCorrecto = false;
+				contraseñaCorrecta = false;
+			});
+
+			$('#fregistro').submit(function(){
+				if (!emailCorrecto || !contraseñaCorrecta) {
+					return false;
+				}
+				return true;
+			});
 
 			$('#re').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 
