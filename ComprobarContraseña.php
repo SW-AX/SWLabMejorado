@@ -8,7 +8,7 @@ require_once('lib/class.wsdlcache.php');
 $soapclient = new nusoap_client('https://al29c.000webhostapp.com/SWLabMejorado/servicioContraseña.php?wsdl',true);
 //Llamamos la función que habíamos implementado en el Web Service
 //e imprimimos lo que nos devuelve
-$result = $soapclient->call('comprobar', array('x'=>$_POST['id']));
+$result = $soapclient->call('comprobar', array('x'=>$_POST['contraseña']));
 //echo $result;
 echo $result;
 ?>

@@ -9,7 +9,7 @@ $soapclient = new nusoap_client('https://al29c.000webhostapp.com/SWLabMejorado/s
 //$email = $_POST('email');
 //Llamamos la función que habíamos implementado en el Web Service
 //e imprimimos lo que nos devuelve
-$result = $soapclient->call('obtener', array('x'=>$_POST['email']));
+$result = $soapclient->call('obtener', array('x'=>$_POST['id']));
 //echo $result;
 	echo (
 		"<td>" . $result->enunciado . "</td><td>" . $result->correcta . "</td><td>" . $result->complejidad . "</td>"
