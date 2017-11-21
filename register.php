@@ -55,7 +55,8 @@
 						Email:*<input type="text" id="var1" name="email" style="width:225px" autocomplete="true"><span id="esVip"></span><br>
 						Nombre y Apellidos:*<input type="text" id="var2" name="identificador"  style="width:225px" autocomplete="true"><br>
 						Nick:*<input type="text" id="var3" name="nick" style="width:225px"> <br>
-						Password:*<input type="password" id="var4" name="password1" style="width:225px"> <br>
+						Password:*<input type="password" id="var4" name="password1" style="width:225px">
+						<span id="esValida"></span> <br>
 						Repetir Password:*<input type="password" id="var5" name="password2" style="width:225px"> <br>
 						Foto (opcional): <input type="file" id="var6" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
 						<input type="submit" name="submit" value="Enviar" id="send">
@@ -65,7 +66,8 @@
 			</section>
 			<footer class='main' id='f1'>
 				<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
-				<a href='https://github.com'>Link GITHUB</a>
+				<a href='https://github.com'>Link GITHUB</a> <br>
+				<span id="showlog"></span>
 			</footer>
 		</div>
 		<?php
@@ -128,12 +130,11 @@
 
 		<script type='text/javascript'>
 			var emailCorrecto = false;
+			var contraseñaCorrecta = false;
 
 			$('#re').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 
 			$('#var1').change(function() {
-				alert("se llama a la funcion");
-				alert($('#var1').val());
 				$.ajax({
 		            data:  {email : $('#var1').val()},
 		            url:   'ComprobarVIP.php',
@@ -143,7 +144,6 @@
 		                emailCorrecto = false;
 		            },
 		            success:  function (response) {
-		     			alert(response);
 		            	if (response == "SI") {
 		                	$("#esVip").html("Valido");
 		                	emailCorrecto = true;
@@ -151,7 +151,30 @@
 		                else {
 		                	$("#esVip").html("No valido");
 		                	emailCorrecto = false;
+		                }    
+		            }
+		        });
+		    });
+
+		    $('#var4').change(function() {
+				$.ajax({
+		            data:  {contraseña : $('#var4').val()},
+		            url:   'ComprobarContraseña.php',
+		            type:  'post',
+		            beforeSend: function () {
+		                $("#esValida").html("Comprobando...");
+		                contraseñaCorrecta = false;
+		            },
+		            success:  function (response) {
+		            	$("#showlog").html(response);
+		            	if (response == "VALIDA") {
+		                	$("#esValida").html("Valida");
+		                	contraseñaCorrecta = true;
 		                }
+		                else {
+		                	$("#esValida").html("No valida");
+		                	contraseñaCorrecta = false;
+		                }    
 		            }
 		        });
 		    });	

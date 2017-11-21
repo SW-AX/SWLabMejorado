@@ -9,6 +9,7 @@ $soapclient = new nusoap_client('http://ehusw.es/jav/ServiciosWeb/comprobarmatri
 //$email = $_POST('email');
 //Llamamos la función que habíamos implementado en el Web Service
 //e imprimimos lo que nos devuelve
-$result = $soapclient->call('comprobar', array('x'=>'alopez340@ikasle.ehu.eus'));
+$result = $soapclient->call('comprobar', array('x'=>$_POST['email']));
+//echo $result;
 echo $result;
 ?>
