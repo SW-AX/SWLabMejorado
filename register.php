@@ -166,7 +166,7 @@
 		                contraseñaCorrecta = false;
 		            },
 		            success:  function (response) {
-		            	$("#showlog").html(response);
+		            	alert(response);
 		            	if (response == "VALIDA") {
 		                	$("#esValida").html("Valida");
 		                	contraseñaCorrecta = true;

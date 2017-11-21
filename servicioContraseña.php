@@ -20,6 +20,6 @@ function comprobar ($x){
 	return 'INVALIDA';
 }
 //llamamos al método service de la clase nusoap
-$HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
+if ( !isset( $HTTP_RAW_POST_DATA ) ) $HTTP_RAW_POST_DATA =file_get_contents( 'php://input' );
 $server->service($HTTP_RAW_POST_DATA);
 ?>
