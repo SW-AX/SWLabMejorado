@@ -132,6 +132,13 @@
 			var emailCorrecto = false;
 			var contraseñaCorrecta = false;
 
+			if(!emailCorrecto || !contraseñaCorrecta) {
+				 $(':input[type="submit"]').prop('disabled', true);
+			}
+			if(emailCorrecto && contraseñaCorrecta) {
+				$(':input[type="submit"]').prop('disabled', false);
+			}
+
 			$('#re').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 
 			$('#var1').change(function() {
