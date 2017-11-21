@@ -3,7 +3,7 @@
 require_once('lib/nusoap.php');
 require_once('lib/class.wsdlcache.php');
 //creamos el objeto de tipo soap_server
-$ns = "https://al29c.000webhostapp.com/SWLabMejorado";
+$ns = "https://al29c.000webhostapp.com/SWLabMejorado/lib";
 $server = new soap_server;
 $server->configureWSDL('comprobar',$ns);
 $server->wsdl->schemaTargetNamespace = $ns;
