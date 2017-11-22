@@ -171,7 +171,7 @@
 		    $('#var4').change(function() {
 				$.ajax({
 		            data:  {contraseña : $('#var4').val()},
-		            url:   'ComprobarContraseña.php',
+		            url:   'ComprobarContrasena.php',
 		            type:  'post',
 		            beforeSend: function () {
 		                $("#esValida").html("Comprobando...");
