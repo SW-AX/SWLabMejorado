@@ -24,14 +24,15 @@
 		<script type='text/javascript'>
 		
 		$('.obtenerPregunta').click(function() { 
-
+			alert('se llama a la funcion');
             $.ajax({
 				data: {id : $('#id').val()},
                 url: 'obtenerPregunta.php',
                 type: 'POST',
             
                 success: function (response) {
-                  $("#fila").html(response);
+                	alert(response);
+                  	$("#fila").html(response);
                 }
             });  
     	});

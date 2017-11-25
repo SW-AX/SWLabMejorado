@@ -12,6 +12,7 @@ $soapclient = new nusoap_client('https://al29c.000webhostapp.com/SWLabMejorado/s
 $result = $soapclient->call('obtener', array('x'=>$_POST['id']));
 //echo $result;
 	echo (
-		"<td>" . $result->enunciado . "</td><td>" . $result->correcta . "</td><td>" . $result->complejidad . "</td>"
+		$result[0]
 	);
+	//"<td>" . $result['enunciado'] . "</td><td>" . $result['correcta'] . "</td><td>" . $result['complejidad'] . "</td>"
 ?>
