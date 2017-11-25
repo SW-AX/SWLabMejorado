@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -41,6 +44,13 @@
 			</section>
 			<footer class='main' id='f1'>
 				<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
+
+
+
+
+
+
+
 				<a href='https://github.com'>Link GITHUB</a>
 			</footer>
 		</div>
@@ -48,6 +58,15 @@
 		if(isset($_GET['op'])) {
 			$op = $_GET['op'];
 			if ($op == 'logged') {
+				if(isset($_SESSION['email'])){
+					echo("
+						<script type='text/javascript'>
+							alert('".$_SESSION['email']."');
+							alert('".$_SESSION['rol']."');
+						</script>
+					");	
+				}
+
 				echo("
 				<script type='text/javascript'>
 					$('#re').attr('href', 'register.php?op=logged&e=" .$_GET['e']. "')
@@ -65,6 +84,23 @@
 				");
 			}
 		} else {
+			if (isset($_SESSION['autentificado'])) {
+				session_unset();
+				session_destroy();
+				if (isset($_SESSION['autentificado'])) {
+					echo("
+						<script type='text/javascript'>
+							alert('". $_SESSION['autentificado'] ."');
+						</script>
+					");
+				} else {
+					echo("
+						<script type='text/javascript'>
+							alert('La sesion se ha borrado bien');
+						</script>
+					");
+				}
+			}
 			echo("
 				<script type='text/javascript'>
 					$('#vp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});

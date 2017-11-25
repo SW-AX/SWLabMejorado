@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -53,10 +56,20 @@
 				mysqli_close( $mysql); //cierra la conexion
 
 				if($cont == 1){
+
+					$_SESSION["autentificado"]= "SI";
+					$_SESSION["email"]= $email;
+
+					$row = mysqli_fetch_array($usuarios);
+					$_SESSION["rol"] = $row["rol"];
+
 					echo ("
 						<script type='text/javascript'>
 						alert('login correcto!');
 						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
+						alert('".$_SESSION["autentificado"]."');
+						alert('".$_SESSION["email"]."');
+						alert('".$_SESSION["rol"]."');
 						</script>
 					");
 				}
