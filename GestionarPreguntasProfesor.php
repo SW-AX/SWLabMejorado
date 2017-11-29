@@ -19,7 +19,8 @@
 						
 						$link= mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
 						$preguntas = mysqli_query($link, "SELECT * FROM preguntas" );
-						echo '<table border = 1> <tr> <th> enunciado </th> <th> complejidad </th> <th> tema </th></tr>';
+						echo '<table border = 1> <tr> <th>email</th> <th> enunciado </th> <th>rCorrecta</th> <th>rIncorrecta1</th> <th>rIncorrecta2</th>
+						<th>rIncorrecta3</th><th> complejidad </th> <th> tema </th></tr>';
 						while ($row = mysqli_fetch_array( $preguntas )) {
 							echo '<tr>';
 							echo '<form id = ' . $row["id"] . ' >';

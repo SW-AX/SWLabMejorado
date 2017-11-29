@@ -34,7 +34,7 @@
 			</header>
 			<nav class='main' id='n1' role='navigation'>
 				<span>Inicio</span>
-				<span><a href=<?php echo("'inicio.php?op=logged&e=" .$_GET['e']. "'"); ?>>Volver al inicio</a></span>
+				<span><a href=<?php if(isset($_GET['e'])) echo("'inicio.php?op=logged&e=" .$_GET['e']. "'");?>>Volver al inicio</a></span>
 			</nav>
 			<section class="main" id="s1">
 
