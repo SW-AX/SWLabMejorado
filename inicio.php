@@ -24,6 +24,7 @@
 				<span ><a id="vp" href=<?php if(isset($_GET['e'])) echo("'verPreguntas.php?op=logged&e=" .$_GET['e']. "'"); ?>>Preguntas</a></span>
 				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
 				<span ><a id="ip" href=<?php if(isset($_GET['e'])) echo("'insertarPregunta.php?op=logged&e=" .$_GET['e']. "'"); ?>>Añadir Pregunta</a></span>
+				<span> <a id="gp" href="rolPreguntas.php">Gestionar Preguntas</a></span>
 				<br><br><br>
 				<span>
 					<?php
@@ -74,8 +75,8 @@
 					$('#lg').html('Logout');
 					$('#lg').attr('href', 'inicio.php');
 					$('#main').html('Bienvenido!');
-					$('#main').append('<br><a>Gestionar Preguntas</a>');
-					$('#main a').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');
+					/*$('#main').append('<br><a>Gestionar Preguntas</a>');
+					$('#main a').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');*/
 
 					$('#lg').click( function (){
 						alert('Adios! Vuelve pronto');					
@@ -105,6 +106,7 @@
 				<script type='text/javascript'>
 					$('#vp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 					$('#ip').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+					$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 				</script>
 			");
 		}
