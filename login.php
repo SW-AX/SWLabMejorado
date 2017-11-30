@@ -41,6 +41,7 @@
 			</footer>
 		</div>
 		<?php
+			session_start();
 			if(isset($_POST['submit'])) {
 
 				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
@@ -80,6 +81,17 @@
 						</script>
 					");
 				}
+			}
+			else {
+ 				if ($_SESSION["autentificado"]= "SI";) {
+ 					echo ("
+						<script type='text/javascript'>
+						alert('ya te habias logeado!');
+						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
+						</script>
+					");
+ 				}
+
 			}
 		?>
 		<script type='text/javascript'>
