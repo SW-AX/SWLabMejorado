@@ -56,9 +56,7 @@
 			</footer>
 		</div>
 		<?php
-		if(isset($_GET['op'])) {
-			$op = $_GET['op'];
-			if ($op == 'logged') {
+		if(isset($_GET['e'])) {
 				if(isset($_SESSION['email'])){
 					echo("
 						<script type='text/javascript'>
@@ -83,7 +81,6 @@
 					});
 				</script>
 				");
-			}
 		} else {
 			if (isset($_SESSION['autentificado'])) {
 				session_unset();

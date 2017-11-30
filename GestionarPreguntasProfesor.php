@@ -1,5 +1,29 @@
 <?php
 	session_start();
+
+	if (isset($_SESSION['rol']) == false) {
+		echo ("
+			<script type='text/javascript'>
+			alert('Fuera tramposo!');
+			window.location.href = 'inicio.php';
+			</script>
+		");
+	}
+
+	if ($_SESSION['rol'] == 'alumno') {
+		echo ("
+			<script type='text/javascript'>
+			alert('Bienvenido alumno');
+			window.location.href = 'GestionarPreguntas.php';
+			</script>
+		");
+	} else if ($_SESSION['rol'] == 'profesor') {
+		echo ("
+			<script type='text/javascript'>
+			alert('Bienvenido profesor');
+			</script>
+		");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +36,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	</head>
 	<body>
+		<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Volver al inicio</a></span>
 	<section class="main" id="s1">
 				<div id="main">
 					<?php

@@ -41,14 +41,19 @@
 			</footer>
 		</div>
 		<?php
-			session_start();
 			if(isset($_POST['submit'])) {
+
+				echo ("
+						<script type='text/javascript'>
+						alert('enviado!');
+						</script>
+					");
 
 				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
 				or die(mysqli_error());
 
 				$email = $_POST['email'];
-				$pass = $_POST['pass'];
+				$pass = crypt($_POST['pass'], '$2a$07$usesomadasdsadsadsadasdasdasdsadesillystringfors');
 
 				$usuarios = mysqli_query( $mysql,"select * from usuarios where email='$email' and password='$pass'");
 
@@ -57,6 +62,12 @@
 				mysqli_close( $mysql); //cierra la conexion
 
 				if($cont == 1){
+
+					echo ("
+						<script type='text/javascript'>
+						alert('una fila');
+						</script>
+					");
 
 					$_SESSION["autentificado"]= "SI";
 					$_SESSION["email"]= $email;
@@ -83,11 +94,11 @@
 				}
 			}
 			else {
- 				if ($_SESSION["autentificado"]= "SI";) {
+ 				if (isset($_SESSION["autentificado"]) && $_SESSION["autentificado"] == true) {
  					echo ("
 						<script type='text/javascript'>
 						alert('ya te habias logeado!');
-						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
+						window.location.href = 'inicio.php?op=logged&e=" . $_SESSION['email'] . "';
 						</script>
 					");
  				}

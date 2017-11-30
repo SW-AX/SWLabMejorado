@@ -85,8 +85,11 @@
 			if ($_POST['password1'] != $_POST['password2'])
 				die("Error contraseñas");
 			
+			$rol = 'alumno';
 
-			$sql = "INSERT INTO usuarios(email, nombre, nick, password, foto) VALUES ('$_POST[email]', '$_POST[identificador]', '$_POST[nick]', '$_POST[password1]', '$imagen')";
+			$cpass = crypt($_POST['password1'], '$2a$07$usesomadasdsadsadsadasdasdasdsadesillystringfors');
+
+			$sql = "INSERT INTO usuarios(email, nombre, nick, rol, password, foto) VALUES ('$_POST[email]', '$_POST[identificador]', '$_POST[nick]', '$rol', '$cpass', '$imagen')";
 
 			if(!mysqli_query($link, $sql)) {
 				die("Error: " . mysqli_error($link));

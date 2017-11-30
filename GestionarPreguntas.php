@@ -1,6 +1,15 @@
 <?php
 	session_start();
 
+	if (isset($_SESSION['rol']) == false) {
+		echo ("
+			<script type='text/javascript'>
+			alert('Fuera tramposo!');
+			window.location.href = 'inicio.php';
+			</script>
+		");
+	}
+
 	if ($_SESSION['rol'] == 'profesor') {
 		echo ("
 			<script type='text/javascript'>
@@ -8,7 +17,7 @@
 			window.location.href = 'GestionarPreguntasProfesor.php';
 			</script>
 		");
-	} else {
+	} else if ($_SESSION['rol'] == 'alumno') {
 		echo ("
 			<script type='text/javascript'>
 			alert('Bienvenido alumno');
