@@ -44,6 +44,20 @@
 			<nav class='main' id='n1' role='navigation'>
 				<span>Inicio</span>
 				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Volver al inicio</a></span>
+				<br><br><br>
+				<span>
+					<?php
+						if(isset($_GET['e'])) {
+							$link= mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
+							$usuario = mysqli_query($link, "SELECT * FROM usuarios WHERE email = '" . $_GET['e'] . "'");
+							
+							$row = mysqli_fetch_array( $usuario );
+							echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $row['foto'] ).'"/>');
+							echo ("<br/>");
+							echo ($row['email']);
+						}
+					?>	
+				</span>
 			</nav>
 			<section class="main" id="s1">
 

@@ -17,12 +17,6 @@
 			window.location.href = 'GestionarPreguntas.php';
 			</script>
 		");
-	} else if ($_SESSION['rol'] == 'profesor') {
-		echo ("
-			<script type='text/javascript'>
-			alert('Bienvenido profesor');
-			</script>
-		");
 	}
 ?>
 <!DOCTYPE html>
@@ -58,7 +52,8 @@
 								echo '<td> <input type="text" value="' . $row["rIncorrecta3"] . '" name="rIncorrecta3" /> </td>';
 								echo '<td> <input type="text" value="' . $row["complejidad"] . '" name="complejidad" /> </td>';
 								echo '<td> <input type="text" value="' . $row["tema"] . '" name="tema" /> </td>';
-								echo '<td> <input type="button" value="Enviar" onclick="actualizarFila(' . $row["id"] . ')" /> </td>';
+								echo '<td> <input type="button" value="Editar" onclick="actualizarFila(' . $row["id"] . ')" /> </td>';
+								echo '<td> <input type="button" value="Borrar" onclick="borrarFila(' . $row["id"] . ')" /> </td>';
 								echo '<input type="hidden" value="' . $row["id"] . '" name="id" />';
 							
 							echo '</form>';
@@ -77,10 +72,22 @@
 		            url:   'actualizarFila.php',
 		            type:  'post',
 		            beforeSend: function () {
-		                alert(row);
+		                alert('Editando fila: ' + row);
 		            },
 		            success:  function (response) {
 		            	alert(response);
+		            }
+		        });
+				}
+
+				function borrarFila(row) {
+					$.ajax({
+		            data:  {id : row},
+		            url:   'borrarFila.php',
+		            type:  'post',
+		            success:  function (response) {
+		            	alert(response);
+		            	location.reload();
 		            }
 		        });
 				}

@@ -29,7 +29,9 @@
 							$usuario = mysqli_query($link, "SELECT * FROM usuarios WHERE email = '" . $_GET['e'] . "'");
 							
 							$row = mysqli_fetch_array( $usuario );
-							echo ('<img src="data:image/jpeg;base64,'.base64_encode( $row['foto'] ).'"/>');
+							echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $row['foto'] ).'"/>');
+							echo ("<br/>");
+							echo ($row['email']);
 						}
 					?>	
 				</span>

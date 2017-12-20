@@ -33,7 +33,8 @@
 						Password*: <input type="password" id="pass" name="pass" style="width:225px"> <br>
 						<input type="submit" name = "submit" value="Enviar" id="send">
 						<input type="reset" id="del">
-					</form>
+					</form><br/>
+					<span><a id="co" href='contrasenaOlvidada.php'>Has olvidado tu contraseña?</a></span>
 				</div>
 			</section>
 			<footer class='main' id='f1'>
@@ -43,12 +44,6 @@
 		</div>
 		<?php
 			if(isset($_POST['submit'])) {
-
-				echo ("
-						<script type='text/javascript'>
-						alert('enviado!');
-						</script>
-					");
 
 				$mysql = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz")
 				or die(mysqli_error());
@@ -60,15 +55,9 @@
 
 				$cont = mysqli_num_rows($usuarios); //Se verifica el total de filas devueltas
 
-				mysqli_close( $mysql); //cierra la conexion
+				//mysqli_close( $mysql); //cierra la conexion
 
 				if($cont == 1){
-
-					echo ("
-						<script type='text/javascript'>
-						alert('una fila');
-						</script>
-					");
 
 					$_SESSION["autentificado"]= "SI";
 					$_SESSION["email"]= $email;
@@ -80,12 +69,7 @@
 						<script type='text/javascript'>
 						alert('login correcto!');
 						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
-						alert('".$_SESSION["autentificado"]."');
-						alert('".$_SESSION["email"]."');
 						alert('".$_SESSION["rol"]."');
-						document.getElementById('emailReg').innerHTML = 'Bienvenido ' + $email;
-						
-						
 						</script>
 					");
 				}

@@ -84,6 +84,15 @@
 				die("Error identificador");
 			if ($_POST['password1'] != $_POST['password2'])
 				die("Error contraseñas");
+
+			$emailsql = "SELECT * FROM usuarios WHERE email='$_POST[email]'";
+			$usuarios = mysqli_query($link, $emailsql);
+
+			$cont = mysqli_num_rows($usuarios);
+			if ($cont != 0) {
+				die("Error, email ya registrado");
+			}
+
 			
 			$rol = 'alumno';
 
@@ -181,7 +190,6 @@
 		                contraseñaCorrecta = false;
 		            },
 		            success:  function (response) {
-		            	alert(response);
 		            	if (response == "VALIDA") {
 		                	$("#esValida").html("Valida");
 		                	contraseñaCorrecta = true;
