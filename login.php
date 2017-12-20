@@ -17,6 +17,7 @@
 			<header class='main' id='h1'>
 				<span class="right"><a id="lg" href="login.php">Login</a></span>
 				<span class="left"><a id="re" href="register.php">Registrarse</a></span>
+				<h4 id="emailReg">Usted no esta registrado</h4>
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
@@ -82,6 +83,9 @@
 						alert('".$_SESSION["autentificado"]."');
 						alert('".$_SESSION["email"]."');
 						alert('".$_SESSION["rol"]."');
+						document.getElementById('emailReg').innerHTML = 'Bienvenido ' + $email;
+						
+						
 						</script>
 					");
 				}
