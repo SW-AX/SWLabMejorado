@@ -78,7 +78,6 @@
 		?>
 		<script type='text/javascript'>
 			$('#cr').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
-			$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 		</script>	
 	</body>
 </html>
