@@ -61,7 +61,12 @@
 		if(isset($_POST['submit'])) {
 
 			$link = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
-			$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+			if ($_FILES['imagen']['size'] > 0) {
+				$file = file_get_contents($_FILES['imagen']['tmp_name']);
+			} else {
+				$file = file_get_contents("./default.jpg");
+			}
+			$imagen = addslashes($file);
 
 			if ($_POST['email'] == "" || $_POST['identificador'] == "" || $_POST['nick'] == "" || $_POST['password1'] == "" || $_POST['password2'] == "")
 				die("Error campos vacios");

@@ -9,9 +9,16 @@
 			die("Error email");
 		if (strlen($_POST['enunciado']) < 10)
 			die("Error enunciado");
+
+		if ($_FILES['imagen']['size'] > 0) {
+			$file = file_get_contents($_FILES['imagen']['tmp_name']);
+		} else {
+			$file = file_get_contents("./default.jpg");
+		}
+		$imagen = addslashes($file);
 		
 
-		$sql = "INSERT INTO preguntas(email, enunciado, rCorrecta, rIncorrecta1, rIncorrecta2, rIncorrecta3, complejidad, tema) VALUES ('$_POST[email]', '$_POST[enunciado]', '$_POST[rCorrecta]', '$_POST[rIncorrecta1]', '$_POST[rIncorrecta2]', '$_POST[rIncorrecta3]', '$_POST[complejidad]', '$_POST[tema]')";
+		$sql = "INSERT INTO preguntas(email, enunciado, rCorrecta, rIncorrecta1, rIncorrecta2, rIncorrecta3, complejidad, tema, imagen) VALUES ('$_POST[email]', '$_POST[enunciado]', '$_POST[rCorrecta]', '$_POST[rIncorrecta1]', '$_POST[rIncorrecta2]', '$_POST[rIncorrecta3]', '$_POST[complejidad]', '$_POST[tema]', '$imagen')";
 
 		$xml = simplexml_load_file('preguntas.xml');
 

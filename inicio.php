@@ -85,13 +85,18 @@
 				</script>
 				");
 		} else {
+			session_unset();
+			session_destroy();
+			echo("
+				<script type='text/javascript'>
+				</script>
+			");
 			if (isset($_SESSION['autentificado'])) {
 				session_unset();
 				session_destroy();
 				if (isset($_SESSION['autentificado'])) {
 					echo("
 						<script type='text/javascript'>
-							
 						</script>
 					");
 				} else {

@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-		<title>Login</title>
+		<title>Modificar Perfil</title>
 		<link rel='stylesheet' type='text/css' href='estilos/style.css' />
 		<link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='estilos/wide.css'/>
 		<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='estilos/smartphone.css'/>
@@ -39,8 +39,8 @@
 			<section class="main" id="s1">		    
 				<div>
 					<form id="fpreguntas" name="fpreguntas" method="post" action="" style="float:left" enctype="multipart/form-data">
-						Nombre y Apellidos:*<input type="text" id="var2" name="identificador"  style="width:225px" autocomplete="true"><br>
-						Nick:*<input type="text" id="var3" name="nick" style="width:225px"> <br>
+						Nombre y Apellidos:*<input type="text" id="var2" value=<?php echo "'" . $row["nombre"] . "'"?> name="identificador"  style="width:225px" autocomplete="true"><br>
+						Nick:*<input type="text" id="var3" name="nick" value=<?php echo "'" . $row["nick"] . "'"?> style="width:225px"> <br>
 						Password:*<input type="password" id="var4" name="password1" style="width:225px"> <br>
 						Repetir Password:*<input type="password" id="var5" name="password2" style="width:225px"> <br>
 						<span id="esValida"></span> <br>
@@ -60,7 +60,6 @@
 		if(isset($_POST['submit'])) {
 
 			$link = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
-			$imagen = addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
 
 			if ( $_POST['identificador'] == "" || $_POST['nick'] == "" || $_POST['password1'] == "" || $_POST['password2'] == "")
 				die("Error campos vacios");
@@ -122,7 +121,15 @@
 				contraseñaCorrecta = false;
 			});
 
-			$('#fregistro').submit(function(){
+			$('#fpreguntas').submit(function(){
+				if ($("#var4").val() == "" || $("#var5").val() == "") {
+					alert("Rellena todos los campos");
+					return false;
+				}
+				if ($("#var4").val() != $("#var5").val()) {
+					alert("Las contraseñas no coinciden");
+					return false;
+				}
 				if (!contraseñaCorrecta) {
 					return false;
 				}
@@ -131,25 +138,26 @@
 
 			
 		    $('#var4').change(function() {
-				$.ajax({
-		            data:  {contraseña : $('#var4').val()},
-		            url:   'ComprobarContrasena.php',
-		            type:  'post',
-		            beforeSend: function () {
-		                $("#esValida").html("Comprobando...");
-		                contraseñaCorrecta = false;
-		            },
-		            success:  function (response) {
-		            	if (response == "VALIDA") {
-		                	$("#esValida").html("Valida");
-		                	contraseñaCorrecta = true;
-		                }
-		                else {
-		                	$("#esValida").html("No valida");
-		                	contraseñaCorrecta = false;
-		                }    
-		            }
-		        });
+
+					$.ajax({
+			            data:  {contraseña : $('#var4').val()},
+			            url:   'ComprobarContrasena.php',
+			            type:  'post',
+			            beforeSend: function () {
+			                $("#esValida").html("Comprobando...");
+			                contraseñaCorrecta = false;
+			            },
+			            success:  function (response) {
+			            	if (response == "VALIDA") {
+			                	$("#esValida").html("Valida");
+			                	contraseñaCorrecta = true;
+			                }
+			                else {
+			                	$("#esValida").html("No valida");
+			                	contraseñaCorrecta = false;
+			                }    
+			            }
+			        });
 		    });	
 		</script>	
 	</body>

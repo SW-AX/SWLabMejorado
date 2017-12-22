@@ -135,10 +135,21 @@
 			}
 
 			function enviarDatos() {
+				$.ajax({
+		            data:  $("#fpreguntas").serialize(),
+		            url:   'insertarPreguntasParaAJAX.php',
+		            type:  'post',
+		            success:  function () {
+		            	alert("Pregunta introducida correctamente"); 
+		            }
+		        });
+
+				/*
 				alert("Llama a enviar");
 				xmlhttp.open("POST",'insertarPreguntasParaAJAX.php');
 				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  				xmlhttp.send($("#fpreguntas").serialize());
+ 				*/
 			}
 			
 			
