@@ -8,7 +8,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
 	<title>Jugar</title>
+	<link rel='stylesheet' type='text/css' href='estilos/style.css' />
+	<link rel='stylesheet' type='text/css' media='only screen and (min-width: 530px) and (min-device-width: 481px)' href='estilos/wide.css'/>
+	<link rel='stylesheet' type='text/css' media='only screen and (max-width: 480px)' href='estilos/smartphone.css'/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<style type="text/css">
 		table {
@@ -20,22 +24,20 @@
 	</style>
 </head>
 <body>
-	<?php
-
-	/*
-	if(!isset($_SESSION["email"])) {
-		header("Location: inicio.php");
-	} else if($_SESSION["rol"] == "profesor") {
-		echo ("
-			<script type='text/javascript'>
-			alert('Los profesores no pueden acceder a esta funcionalidad');
-			</script>
-		");
-
-		header("Location: inicio.php");
-	}
-	*/
-
+<div id='page-wrap'>
+			<header class='main' id='h1'>
+				<span class="right"><a id="lg" href="login.php">Login</a></span>
+				<span class="left"><a id="re" href="register.php">Registrarse</a></span>
+				<h2>Quiz: el juego de las preguntas</h2>
+			</header>
+			<nav class='main' id='n1' role='navigation'>
+				<span><a id="in" href='inicio.php'>Inicio</a></span>
+				<span><a id="cr" href='creditos.php'>Creditos</a></span>	
+				<span><a id="jugar" href='jugar.php'>¿Cuánto sabes? Pruébame</a></span>
+			</nav>
+			<section class="main" id="s1">
+				<div id="main">
+				<?php
 	$link = mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
 	$preguntas = mysqli_query($link, "SELECT * FROM preguntas");
 
@@ -140,9 +142,27 @@
 
 	echo "</tr>";
 	echo "</table>";
+	echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $pregunta['imagen'] ).'"/>');
 
 ?>
+				</div>
+			</section>
+			
+			<footer class='main' id='f1'>
+				<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
+
+
+
+
+
+
+
+				<a href='https://github.com'>Link GITHUB</a>
+			</footer>
+</div>
+	
 <script type="text/javascript">
+$('#jugar').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 
 	$("#correcta").click(function(){ 
 		$.ajax({
