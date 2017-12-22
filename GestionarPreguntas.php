@@ -69,7 +69,7 @@
 						<span id = "pTotales"></span> / <span id = "pPropias"></span> <br>
 						
 					<form id="fpreguntas" name="fpreguntas" method="post" action="" enctype="multipart/form-data">
-						Email:*<input type="text" id="var1" name="email"   style="width:225px" autocomplete="true"> <br>
+						Email:*<input type="text" id="var1" name="email"   style="width:225px" value=<?php echo ($_SESSION['email']);?> readonly> <br>
 						Enunciado de la pregunta:*<input type="text" name="enunciado" id="var2" style="width:225px"> <br>
 						Respuesta Correcta:*<input type="text" id="var3" name="rCorrecta" style="width:225px"> <br>
 						Respuesta Incorrecta:*<input type="text" id="var4" name="rIncorrecta1" style="width:225px"> <br>
