@@ -140,9 +140,20 @@
 			break;
 	}
 
+	
+	
+	echo "<td>";
+	echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $pregunta['imagen'] ).'"/>');
+	echo "</td>";
+	echo "<td> Tema: ";
+	echo($pregunta["tema"]);
+	echo "</td>";
+	echo "<td> Complejidad: ";
+	echo($pregunta["complejidad"]);
+	echo "</td>";
 	echo "</tr>";
 	echo "</table>";
-	echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $pregunta['imagen'] ).'"/>');
+	
 
 ?>
 				</div>
