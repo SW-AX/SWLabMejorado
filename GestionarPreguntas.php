@@ -64,7 +64,7 @@
 				</span>
 			</nav>
 			<section class="main" id="s1">
-				<div style="float: left">	   
+				<div style="float: left;">	   
 						Preguntas totales / Preguntas propias <br>
 						<span id = "pTotales"></span> / <span id = "pPropias"></span> <br>
 						
@@ -85,7 +85,7 @@
 					
 				</div>
 
-				<div id="resultado" style="float: left">
+				<div id="resultado" style="float: left;">
 					
 				</div>
 			</section>

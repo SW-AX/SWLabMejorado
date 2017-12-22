@@ -24,6 +24,7 @@
 				<span><a id="cr" href='creditos.php'>Creditos</a></span>	
 				<span><a id="gp" href=''>Gestionar Preguntas</a></span>
 				<span><a id="mp" href=''>Modificar Perfil</a></span>
+				<span><a id="jugar" href='jugar.php'>¿Cuánto sabes? Pruébame</a></span>
 				<span>
 					<?php
 						if(isset($_GET['e'])) {
@@ -67,6 +68,7 @@
 
 				echo("
 				<script type='text/javascript'>
+					$('#jugar').hide();
 					$('#re').hide();
 					$('#cr').attr('href', 'creditos.php?op=logged&e=" .$_GET['e']. "')
 					$('#mp').attr('href', 'modificarPerfil.php?op=logged&e=" .$_GET['e']. "')

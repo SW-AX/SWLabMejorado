@@ -30,7 +30,31 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	</head>
 	<body>
-		<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Volver al inicio</a></span>
+		<div id='page-wrap'>
+			<header class='main' id='h1'>
+				<h2>Quiz: el juego de las preguntas</h2>
+			</header>
+		<nav class='main' id='n1' role='navigation'>
+				
+				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Inicio</a></span>
+				<span><a id="cr" href=<?php if(isset($_SESSION['email'])) echo("'creditos.php?op=logged&e=" .$_SESSION['email']. "'");?>>Creditos</a></span>	
+				<span><a id="gp" href=''>Gestionar Preguntas</a></span>
+				<span><a id="mp" href=<?php if(isset($_SESSION['email'])) echo("'modificarPerfil.php?op=logged&e=" .$_SESSION['email']. "'");?>>Modificar Perfil</a></span>
+				
+				<span>
+					<?php
+						if(isset($_GET['e'])) {
+							$link= mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
+							$usuario = mysqli_query($link, "SELECT * FROM usuarios WHERE email = '" . $_GET['e'] . "'");
+							
+							$row = mysqli_fetch_array( $usuario );
+							echo ('<img width="60" height="60" src="data:image/jpeg;base64,'.base64_encode( $row['foto'] ).'"/>');
+							echo ("<br/>");
+							echo ($row['email']);
+						}
+					?>	
+				</span>
+			</nav>
 	<section class="main" id="s1">
 				<div id="main">
 					<?php
@@ -38,7 +62,7 @@
 						
 						$link= mysqli_connect("localhost","id2956929_alexlop97","password","id2956929_quiz");
 						$preguntas = mysqli_query($link, "SELECT * FROM preguntas" );
-						echo '<table border = 1> <tr> <th>email</th> <th> enunciado </th> <th>rCorrecta</th> <th>rIncorrecta1</th> <th>rIncorrecta2</th>
+						echo ' <div style="overflow: scroll;"><table border = 1 > <tr> <th>email</th> <th> enunciado </th> <th>rCorrecta</th> <th>rIncorrecta1</th> <th>rIncorrecta2</th>
 						<th>rIncorrecta3</th><th> complejidad </th> <th> tema </th></tr>';
 						while ($row = mysqli_fetch_array( $preguntas )) {
 							echo '<tr>';
@@ -60,12 +84,19 @@
 							echo '</tr>';
 						}
 						echo '</table>';
+						echo '</div>';
 						$preguntas->close();
 						mysqli_close($link);
 					?>
 				</div>
 			</section>
+			<footer class='main' id='f1'>
+				<p><a href="http://es.wikipedia.org/wiki/Quiz" target="_blank">Que es un Quiz?</a></p>
+				<a href='https://github.com'>Link GITHUB</a>
+			</footer>
+			</div>
 			<script>
+			$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 				function actualizarFila(row) {
 					$.ajax({
 		            data:  $("#" + row).serialize(),
