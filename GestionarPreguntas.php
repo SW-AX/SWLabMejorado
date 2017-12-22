@@ -21,6 +21,7 @@
 		echo ("
 			<script type='text/javascript'>
 			alert('Bienvenido alumno');
+			
 			</script>
 		");
 	}
@@ -66,8 +67,13 @@
 				</div>
 		    
 				<div>
+					    Numero de usuarios editando preguntas:
+						<span id = "uConectados"></span>
+						Preguntas totales / Preguntas propias
+						<span id = "pTotales"></span> / <span id = "pPropias"></span>
+						
 					<form id="fpreguntas" name="fpreguntas" method="post" action="" style="float:left" enctype="multipart/form-data">
-						Email:*<input type="text" id="var1" name="email" style="width:225px" autocomplete="true"> <br>
+						Email:*<input type="text" id="var1" name="email"   style="width:225px" autocomplete="true"> <br>
 						Enunciado de la pregunta:*<input type="text" name="enunciado" id="var2" style="width:225px"> <br>
 						Respuesta Correcta:*<input type="text" id="var3" name="rCorrecta" style="width:225px"> <br>
 						Respuesta Incorrecta:*<input type="text" id="var4" name="rIncorrecta1" style="width:225px"> <br>
@@ -92,6 +98,8 @@
 		</div>
 			
 		<script>
+		
+		
 			function changeImg(input){
 				if (!$('#newImg').length) {
 				$("#s1").append('<img id="newImg" src="" style="float:right;width:180px;height:180px">');
@@ -133,6 +141,38 @@
 				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  				xmlhttp.send($("#fpreguntas").serialize());
 			}
+			setInterval(contadorUsuarios, 1000);
+			function contadorUsuarios(){
+				
+				$.ajax({
+					url: 'contadorUsuarios.php',
+					success:function(datos){
+						
+					$('#uConectados').html(datos);}
+				});
+			}
+			
+			setInterval(preguntasTotales, 1000);
+			function preguntasTotales(){
+				
+				$.ajax({
+					url: 'preguntasTotales.php',
+					success:function(datos){
+
+					$('#pTotales').html(datos);}
+				});
+			}
+			setInterval(preguntasPropias, 1000);
+			function preguntasPropias(){
+		
+				$.ajax({
+					url: 'preguntasPropias.php',
+					success:function(datos){
+
+					$('#pPropias').html(datos);}
+				});
+			}
+			
 		</script>
 	</body>
 </html>

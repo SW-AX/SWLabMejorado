@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" ?>
 <usuarios>
+	<contador>
+	0
+	</contador>
 	<usuario>
 		<email>jperez001@ikasle.ehu.es</email>
 		<nombre>Juan</nombre>

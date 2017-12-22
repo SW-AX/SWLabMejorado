@@ -25,6 +25,7 @@
 				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
 				<span ><a id="ip" href=<?php if(isset($_GET['e'])) echo("'insertarPregunta.php?op=logged&e=" .$_GET['e']. "'"); ?>>Añadir Pregunta</a></span>
 				<span> <a id="gp" href="rolPreguntas.php">Gestionar Preguntas</a></span>
+				<span> <a id="mp" href=""></a></span>
 				<br><br><br>
 				<span>
 					<?php
@@ -71,6 +72,8 @@
 				<script type='text/javascript'>
 					$('#re').attr('href', 'register.php?op=logged&e=" .$_GET['e']. "')
 					$('#cr').attr('href', 'creditos.php?op=logged&e=" .$_GET['e']. "')
+					$('#mp').attr('href', 'modificarPerfil.php?op=logged&e=" .$_GET['e']. "')
+					$('#mp').attr('a', 'Modificar Perfil')
 					$('#lg').html('Logout');
 					$('#lg').attr('href', 'inicio.php');
 					$('#main').html('Bienvenido!');

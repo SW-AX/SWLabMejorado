@@ -25,6 +25,7 @@
 				<span ><a id="vp" href='verPreguntas.php'>Preguntas</a></span>
 				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
 				<span ><a id="ip" href='insertarPregunta.php'>Añadir Pregunta</a></span>
+				<span ><a id="mp" href='modificarPerfil.php'>Modificar Perfil</a></span>
 			</nav>
 			<section class="main" id="s1">
 				<div id="main">
