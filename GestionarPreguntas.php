@@ -64,7 +64,7 @@
 				</span>
 			</nav>
 			<section class="main" id="s1">
-				<div>	   
+				<div style="float: left">	   
 						Preguntas totales / Preguntas propias <br>
 						<span id = "pTotales"></span> / <span id = "pPropias"></span> <br>
 						
@@ -80,11 +80,12 @@
 						Imagen: <input type="file" id="var9" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
 						<input type="button" name="send" value="Insertar Pregunta" id="send" onclick ="enviarDatos()">
 						<input type="reset" id="del">
+						<input type="button" name="Ver Preguntas" value="Ver Preguntas" id="ver" onclick="pedirDatos()">	
 					</form>	<br>
-					<input type="button" name="Ver Preguntas" value="Ver" id="ver" onclick="pedirDatos()">	
+					
 				</div>
 
-				<div id="resultado">
+				<div id="resultado" style="float: left">
 					
 				</div>
 			</section>
@@ -110,7 +111,7 @@
 			}
 
 			$("#del").click(function(){
-				$("#var1").val("");
+				
 				$("#var2").val("");
 				$("#var3").val("");
 				$("#var4").val("");
