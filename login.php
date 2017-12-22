@@ -67,7 +67,6 @@
 						<script type='text/javascript'>
 						alert('login correcto!');
 						window.location.href = 'inicio.php?op=logged&e=" . $email . "';
-						alert('".$_SESSION["rol"]."');
 						</script>
 					");
 				}

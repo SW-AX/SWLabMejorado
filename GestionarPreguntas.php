@@ -13,14 +13,12 @@
 	if ($_SESSION['rol'] == 'profesor') {
 		echo ("
 			<script type='text/javascript'>
-			alert('Bienvenido profesor');
 			window.location.href = 'GestionarPreguntasProfesor.php';
 			</script>
 		");
 	} else if ($_SESSION['rol'] == 'alumno') {
 		echo ("
 			<script type='text/javascript'>
-			alert('Bienvenido alumno');
 			
 			</script>
 		");
