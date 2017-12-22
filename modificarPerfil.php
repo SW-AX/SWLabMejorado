@@ -18,9 +18,10 @@
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
-				<span>Inicio</span>
-				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Volver al inicio</a></span>
-				<br><br><br>
+				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Inicio</a></span>
+				<span><a id="cr" href=<?php if(isset($_SESSION['email'])) echo("'creditos.php?op=logged&e=" .$_SESSION['email']. "'");?>>Creditos</a></span>	
+				<span><a id="gp" href=<?php if(isset($_SESSION['email'])) echo("'GestionarPreguntas.php?op=logged&e=" .$_SESSION['email']. "'");?> >Gestionar Preguntas</a></span>
+				<span><a id="mp" href=''>Modificar Perfil</a></span>
 				<span>
 					<?php
 						if(isset($_GET['e'])) {
@@ -112,6 +113,7 @@
 			
 		?>
 				<script type='text/javascript'>
+				$('#mp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 			
 			var contraseñaCorrecta;
 

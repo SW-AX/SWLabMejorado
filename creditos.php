@@ -18,10 +18,10 @@
 			</header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a id="in" href='inicio.php'>Inicio</a></span>
-				<span ><a id="vp" href=<?php if(isset($_GET['e'])) echo("'verPreguntas.php?op=logged&e=" .$_GET['e']. "'"); ?>>Preguntas</a></span>
-				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
-				<span ><a id="ip" href=<?php if(isset($_GET['e'])) echo("'insertarPregunta.php?op=logged&e=" .$_GET['e']. "'"); ?>>Añadir Pregunta</a></span>
-				<br><br><br>
+				<span><a id="cr" href='creditos.php'>Creditos</a></span>
+				<span><a id="gp" href=''>Gestionar Preguntas</a></span>
+				<span><a id="mp" href=''>Modificar Perfil</a></span>
+				
 				<span>
 					<?php
 						if(isset($_GET['e'])) {
@@ -55,8 +55,10 @@
 			if ($op == 'logged') {
 				echo("
 				<script type='text/javascript'>
-					$('#re').attr('href', 'register.php?op=logged&e=" .$_GET['e']. "')
+					$('#re').hide()
 					$('#in').attr('href', 'inicio.php?op=logged&e=" .$_GET['e']. "')
+					$('#mp').attr('href', 'modificarPerfil.php?op=logged&e=" .$_GET['e']. "')
+					$('#gp').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "')
 					$('#lg').html('Logout')
 					$('#lg').attr('href', 'creditos.php')
 					$('#lg').click( function (){
@@ -68,14 +70,15 @@
 		} else {
 			echo("
 				<script type='text/javascript'>
-					$('#vp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
-					$('#ip').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+					$('#mp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+					$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 				</script>
 			");
 		}
 		?>
 		<script type='text/javascript'>
 			$('#cr').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+			$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 		</script>	
 	</body>
 </html>

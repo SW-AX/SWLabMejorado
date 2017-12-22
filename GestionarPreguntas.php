@@ -43,9 +43,12 @@
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
-				<span>Inicio</span>
-				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Volver al inicio</a></span>
-				<br><br><br>
+				
+				<span><a href=<?php if(isset($_SESSION['email'])) echo("'inicio.php?op=logged&e=" .$_SESSION['email']. "'");?>>Inicio</a></span>
+				<span><a id="cr" href=<?php if(isset($_SESSION['email'])) echo("'creditos.php?op=logged&e=" .$_SESSION['email']. "'");?>>Creditos</a></span>	
+				<span><a id="gp" href=''>Gestionar Preguntas</a></span>
+				<span><a id="mp" href=<?php if(isset($_SESSION['email'])) echo("'modificarPerfil.php?op=logged&e=" .$_SESSION['email']. "'");?>>Modificar Perfil</a></span>
+				
 				<span>
 					<?php
 						if(isset($_GET['e'])) {
@@ -61,18 +64,11 @@
 				</span>
 			</nav>
 			<section class="main" id="s1">
-
-				<div>
-					<input type="button" name="ver" value="Ver" id="ver" onclick="pedirDatos()">
-				</div>
-		    
-				<div>
-					    Numero de usuarios editando preguntas:
-						<span id = "uConectados"></span>
-						Preguntas totales / Preguntas propias
-						<span id = "pTotales"></span> / <span id = "pPropias"></span>
+				<div>	   
+						Preguntas totales / Preguntas propias <br>
+						<span id = "pTotales"></span> / <span id = "pPropias"></span> <br>
 						
-					<form id="fpreguntas" name="fpreguntas" method="post" action="" style="float:left" enctype="multipart/form-data">
+					<form id="fpreguntas" name="fpreguntas" method="post" action="" enctype="multipart/form-data">
 						Email:*<input type="text" id="var1" name="email"   style="width:225px" autocomplete="true"> <br>
 						Enunciado de la pregunta:*<input type="text" name="enunciado" id="var2" style="width:225px"> <br>
 						Respuesta Correcta:*<input type="text" id="var3" name="rCorrecta" style="width:225px"> <br>
@@ -82,9 +78,10 @@
 						Complejidad (1..5)* <input type="text" id="var7" name="complejidad" style="width:225px"> <br>
 						Tema:*<input type="text" id="var8" name="tema" style="width:225px"> <br>
 						Imagen: <input type="file" id="var9" name="imagen" accept="image/*" onChange="changeImg(this)"> <br>
-						<input type="button" name="send" value="Insertar" id="send" onclick ="enviarDatos()">
+						<input type="button" name="send" value="Insertar Pregunta" id="send" onclick ="enviarDatos()">
 						<input type="reset" id="del">
-					</form>
+					</form>	<br>
+					<input type="button" name="Ver Preguntas" value="Ver" id="ver" onclick="pedirDatos()">	
 				</div>
 
 				<div id="resultado">
@@ -98,6 +95,7 @@
 		</div>
 			
 		<script>
+		$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 		
 		
 			function changeImg(input){
@@ -141,16 +139,7 @@
 				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  				xmlhttp.send($("#fpreguntas").serialize());
 			}
-			setInterval(contadorUsuarios, 1000);
-			function contadorUsuarios(){
-				
-				$.ajax({
-					url: 'contadorUsuarios.php',
-					success:function(datos){
-						
-					$('#uConectados').html(datos);}
-				});
-			}
+			
 			
 			setInterval(preguntasTotales, 1000);
 			function preguntasTotales(){

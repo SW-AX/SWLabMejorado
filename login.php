@@ -17,15 +17,12 @@
 			<header class='main' id='h1'>
 				<span class="right"><a id="lg" href="login.php">Login</a></span>
 				<span class="left"><a id="re" href="register.php">Registrarse</a></span>
-				<h4 id="emailReg">Usted no esta registrado</h4>
+				
 				<h2>Quiz: el juego de las preguntas</h2>
 			</header>
 			<nav class='main' id='n1' role='navigation'>
-				<span><a id="in" href='inicio.php'>Inicio</a></span>
-				<span ><a id="vp" href='verPreguntas.php'>Preguntas</a></span>
-				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
-				<span ><a id="ip" href='insertarPregunta.php'>Añadir Pregunta</a></span>
-				<span ><a id="mp" href='modificarPerfil.php'>Modificar Perfil</a></span>
+				<span><a id="in" href='inicio.php'>Inicio</a></span>	
+				<span><a id="cr" href='creditos.php'>Creditos</a></spam>		
 			</nav>
 			<section class="main" id="s1">
 				<div id="main">

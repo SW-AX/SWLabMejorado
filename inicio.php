@@ -21,12 +21,9 @@
 			</header>
 			<nav class='main' id='n1' role='navigation'>
 				<span><a id="in" href='inicio.php'>Inicio</a></span>
-				<span ><a id="vp" href=<?php if(isset($_GET['e'])) echo("'verPreguntas.php?op=logged&e=" .$_GET['e']. "'"); ?>>Preguntas</a></span>
-				<span><a id="cr" href='creditos.php'>Creditos</a></spam>
-				<span ><a id="ip" href=<?php if(isset($_GET['e'])) echo("'insertarPregunta.php?op=logged&e=" .$_GET['e']. "'"); ?>>Añadir Pregunta</a></span>
-				<span> <a id="gp" href="rolPreguntas.php">Gestionar Preguntas</a></span>
-				<span> <a id="mp" href=""></a></span>
-				<br><br><br>
+				<span><a id="cr" href='creditos.php'>Creditos</a></span>	
+				<span><a id="gp" href=''>Gestionar Preguntas</a></span>
+				<span><a id="mp" href=''>Modificar Perfil</a></span>
 				<span>
 					<?php
 						if(isset($_GET['e'])) {
@@ -63,22 +60,22 @@
 				if(isset($_SESSION['email'])){
 					echo("
 						<script type='text/javascript'>
-							alert('".$_SESSION['email']."');
+							
 						</script>
 					");	
 				}
 
 				echo("
 				<script type='text/javascript'>
-					$('#re').attr('href', 'register.php?op=logged&e=" .$_GET['e']. "')
+					$('#re').hide();
 					$('#cr').attr('href', 'creditos.php?op=logged&e=" .$_GET['e']. "')
 					$('#mp').attr('href', 'modificarPerfil.php?op=logged&e=" .$_GET['e']. "')
 					$('#mp').attr('a', 'Modificar Perfil')
 					$('#lg').html('Logout');
 					$('#lg').attr('href', 'inicio.php');
 					$('#main').html('Bienvenido!');
-					/*$('#main').append('<br><a>Gestionar Preguntas</a>');
-					$('#main a').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');*/
+					$('#gp').attr('href', 'GestionarPreguntas.php?op=logged&e=" .$_GET['e']. "');
+					$('#gp').attr('a', 'Gestionar Preguntas')
 
 					$('#lg').click( function (){
 						alert('Adios! Vuelve pronto');					
@@ -92,13 +89,13 @@
 				if (isset($_SESSION['autentificado'])) {
 					echo("
 						<script type='text/javascript'>
-							alert('". $_SESSION['autentificado'] ."');
+							
 						</script>
 					");
 				} else {
 					echo("
 						<script type='text/javascript'>
-							alert('La sesion se ha borrado bien');
+							
 						</script>
 					");
 				}
@@ -108,6 +105,7 @@
 					$('#vp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 					$('#ip').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 					$('#gp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
+					$('#mp').attr('href', '').css({'cursor': 'pointer', 'pointer-events' : 'none'});
 				</script>
 			");
 		}
